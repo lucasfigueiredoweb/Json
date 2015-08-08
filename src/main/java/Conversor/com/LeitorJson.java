@@ -10,23 +10,34 @@ import org.json.simple.parser.ParseException;
 public class LeitorJson {
 	
 	public static void main(String[] args) {
+		
+		//Cria variavel do tipo JSONObject
 		JSONObject jsonObject;
+		
+		//Cria o Parse de tratamento
 		JSONParser parser = new JSONParser();
 
+		//Variaveis que irao armazenar os dados dos arquivos JSON
         String nome;
 		String sobrenome;
 		String estado;
 		String pais;
 		
 		try { 
+			//Salva no objeto JSONObject o que o parse tratou do arquivo
 			jsonObject = (JSONObject) parser.parse(new FileReader( "arquivo.json"));
+			
+			//Salva nas variaveis os dados retirados do arquivo
 			nome = (String) jsonObject.get("nome");
 			sobrenome = (String) jsonObject.get("sobrenome");
 			estado = (String) jsonObject.get("estado");
 			pais = (String) jsonObject.get("pais");
+			
+			//Imprime os dados lidos no JSON
 			System.out.printf("Nome: %s\nSobrenome: %s\nEstado: %s\nPais: %s\n",
 					nome, sobrenome, estado, pais);
 			 }
+		//Tratamento de Exceçoes
 		catch (FileNotFoundException e) {
 			e.printStackTrace(); 
 			}
